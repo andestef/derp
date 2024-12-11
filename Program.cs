@@ -9,7 +9,7 @@ namespace derp
         static void Main(string[] args)
         {
             // Get derp_directory from Registry (Windows only for the moment)
-            using (RegistryKey key = Registry.LocalMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\derp.exe", false))
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey("Software\\derp", false))
             {
                 if (key == null)
                 {
@@ -19,19 +19,20 @@ namespace derp
                 else
                 {
                     derp_directory = key.GetValue("") as string;
-                    derp_directory = derp_directory.Replace("derp.exe", "");
                 }
             }
             // Open Config/folders.json
             StreamReader sr = new StreamReader(derp_directory+"\\config\\folders.json");
-            string file = sr.ReadLine();
-            while (file != null)
+            string line = sr.ReadLine();
+            string file = "";
+            while (line != null)
             {
-                file += '\n'+sr.ReadLine();
+                file += line;
+                line = sr.ReadLine();
             }
             sr.Close();
-            Dictionary<string,string> weatherForecast =
-                JsonSerializer.Deserialize<Dictionary<string, string>>(file);
+            Dictionary<string,string> folders_data = JsonSerializer.Deserialize<Dictionary<string, string>>(file);
+            Console.WriteLine(folders_data["~"]);
         }
     }
 }

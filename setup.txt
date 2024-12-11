@@ -1,2 +1,2 @@
 - create new environment variable search "environemnt variable" in start menu
-- create new key at registry path "Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\" called "derp.exe" and set "(Default)" value to the path to "derp.exe" (In my case "C:\Users\alexa\Documents\coding\cs\derp\bin\Debug\net8.0\derp.exe")
+- create new key at registry path "Computer\HKEY_LOCAL_MACHINE\SOFTWARE" called "derp" and set "(Default)" value to the path to "derp/" (In my case "C:\Users\alexa\Documents\coding\cs\derp"). DO NOT INCLUDE A TRAILING SLASH
