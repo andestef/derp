@@ -16,13 +16,14 @@ namespace derp
                     if (key == null)
                     {
                         Console.WriteLine("Error: Derp rigestry key is undefined. Please follow correct setup instructions.");
-                        System.Environment.Exit(1);
+                        Environment.Exit(1);
                     }
                     else
                     {
                         derp_directory = key.GetValue("") as string;
                     }
                 }
+                Console.WriteLine("'"+args[1]+"'");
                 // Open Config/folders.json
                 StreamReader sr = new StreamReader(derp_directory + "\\config\\folders.json");
                 string line = sr.ReadLine();
@@ -34,8 +35,12 @@ namespace derp
                 }
                 sr.Close();
                 Dictionary<string, string> folders_data = JsonSerializer.Deserialize<Dictionary<string, string>>(file);
-                string start = args[1];
+                string start = folders_data[args[1]];
                 args = args.Skip(2).ToArray();
+                foreach(string i in args)
+                {
+                    start += "\\" + i;
+                }
                 Console.WriteLine(start);
             }
         }
