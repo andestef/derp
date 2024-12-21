@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System.Text.Json;
 using System.IO;
+using System.Security.Cryptography;
 namespace derp
 {
     internal class Program
@@ -23,7 +24,6 @@ namespace derp
                         derp_directory = key.GetValue("") as string;
                     }
                 }
-                Console.WriteLine("'"+args[1]+"'");
                 // Open Config/folders.json
                 StreamReader sr = new StreamReader(derp_directory + "\\config\\folders.json");
                 string line = sr.ReadLine();
@@ -42,6 +42,10 @@ namespace derp
                     start += "\\" + i;
                 }
                 Console.WriteLine(start);
+            }
+            else
+            {
+                Console.WriteLine(args[2]);
             }
         }
     }
