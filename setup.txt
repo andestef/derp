@@ -1,3 +1,3 @@
-- create new environment variable search "environemnt variable" in start menu
 - Create "derp/" directory. Must not require admin permissions to READ or WRITE. Preferably in APPDATA LOCAL
 - create new key at registry path "Computer\HKEY_LOCAL_MACHINE\SOFTWARE" called "derp" and set "(Default)" value to the path to "derp/" (In my case "C:\Users\alexa\Documents\coding\cs\derp"). DO NOT INCLUDE A TRAILING SLASH
+- create new environment variable search "environemnt variable" in start menu make value: (Derp Directory)/derp.bat

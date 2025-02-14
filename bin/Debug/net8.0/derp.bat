@@ -6,7 +6,16 @@ echo "%*" | find "-e">nul && set edit=true
 set x=
 set return=
 if "%edit%"=="false" (
-	for /f "delims=" %%x in ('"%derpdir%\\derp" DERPBAT %*') do cd "%%x"
+	for /f "delims=" %%x in ('"%derpdir%\\derp" DERPBAT %*') do (
+		cd "%%x"
+		setlocal ENABLEDELAYEDEXPANSION
+		set a="%%x"
+		if "!a:~1,1!"=="`" (
+			echo !a!
+			cd %cd%
+		) 
+		setlocal DISABLEDELAYEDEXPANSION
+	)
 ) else (
 	"%derpdir%\\derp" EDIT %*
 )
